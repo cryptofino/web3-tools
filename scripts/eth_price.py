@@ -1,10 +1,15 @@
 import requests
 
 def get_eth_price():
-    url = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-    response = requests.get(url)
-    data = response.json()
-    return data["ethereum"]["usd"]
+    try:
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+        response = requests.get(url, timeout=5)
+        data = response.json()
+        return data["ethereum"]["usd"]
+    except Exception as e:
+        print("Error fetching price:", e)
+        return None
 
 price = get_eth_price()
-print(f"Current Ethereum price: ${price}")
+if price:
+    print(f"Current Ethereum price: ${price}")
