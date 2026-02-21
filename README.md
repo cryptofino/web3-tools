@@ -1,32 +1,16 @@
-# \# Web3 Tools
+\## Tools Included
 
-# 
 
-# A collection of simple blockchain utilities built in public.
 
-# 
+\- Ethereum price checker
 
-# \## Current Tools
+\- Generic token price checker
 
-# \- ETH Gas Tracker
+\- Ethereum address validator
 
-# \- Token Price Checker
 
-# \- Address Validator
 
-# 
+\## Project Structure
 
-# \## Roadmap
 
-# \- Add multi-chain support
-
-# \- Add CLI options
-
-# \- Improve formatting
-
-# 
-
-# ---
-
-# ⚡ Building consistently in public.
 
