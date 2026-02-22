@@ -1,20 +1,22 @@
-import re
+import requests
+import sys
 
-def is_valid_eth_address(address: str) -> bool:
-    if not isinstance(address, str):
-        return False
-    if not address.startswith("0x"):
-        return False
-    if len(address) != 42:
-        return False
-    return re.fullmatch(r"0x[a-fA-F0-9]{40}", address) is not None
+def get_token_price(token):
+    try:
+        url = f"https://api.coingecko.com/api/v3/simple/price?ids={token}&vs_currencies=usd"
+        response = requests.get(url, timeout=5)
+        data = response.json()
+        return data[token]["usd"]
+    except Exception as e:
+        print("Error fetching price:", e)
+        return None
 
-tests = [
-    "0x0000000000000000000000000000000000000000",
-    "0xZZ00000000000000000000000000000000000000",
-    "0x123",
-    "123",
-]
+if len(sys.argv) > 1:
+    token = sys.argv[1]
+else:
+    token = "bitcoin"
 
-for t in tests:
-    print(t, "=>", is_valid_eth_address(t))
+price = get_token_price(token)
+
+if price:
+    print(f"{token.capitalize()} price: ${price}")
