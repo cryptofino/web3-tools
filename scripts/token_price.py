@@ -1,4 +1,5 @@
 import requests
+import sys
 
 def get_token_price(token):
     try:
@@ -10,7 +11,11 @@ def get_token_price(token):
         print("Error fetching price:", e)
         return None
 
-token = "bitcoin"
+if len(sys.argv) > 1:
+    token = sys.argv[1]
+else:
+    token = "bitcoin"
+
 price = get_token_price(token)
 
 if price:
