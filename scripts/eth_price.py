@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 def get_eth_price():
     try:
@@ -11,5 +12,7 @@ def get_eth_price():
         return None
 
 price = get_eth_price()
+
 if price:
-    print(f"Current Ethereum price: ${price}")
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{now}] Ethereum price: ${price}")
