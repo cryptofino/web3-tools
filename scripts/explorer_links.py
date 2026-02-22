@@ -7,5 +7,6 @@ def get_etherscan_tx_link(tx_hash: str) -> str:
 if __name__ == "__main__":
     sample_address = "0x0000000000000000000000000000000000000000"
     sample_tx = "0x1234567890abcdef"
+
     print("Address link:", get_etherscan_address_link(sample_address))
     print("Transaction link:", get_etherscan_tx_link(sample_tx))
